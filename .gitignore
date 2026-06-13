@@ -25,6 +25,7 @@ obj/
 # Editors
 .vscode/
 .idea/
+.vs
 
 # Test and coverage
 coverage/

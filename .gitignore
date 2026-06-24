@@ -7,12 +7,11 @@ obj/
 *.pdb
 *.so
 *.dylib
-*.class
+*.jar
 
 # Dependencies
 packages/
 node_modules/
-vendor/
 
 # Logs
 *.log
@@ -28,28 +27,15 @@ vendor/
 *.swp
 *.swo
 
-# OS
+# OS generated files
 .DS_Store
 Thumbs.db
 
-# Tests
-TestResults/
-
-# Coverage
+# Test and coverage
 coverage/
 htmlcov/
 *.coverage
 
 # Temporary files
 *.tmp
-*~
-```
-
-Wait, let me reconsider. The added files are all C# source files in a repository structure, and there are no build artifacts, dependency directories, or temporary files in the changes. The current .gitignore appears to be empty, and there's nothing in the changes that needs to be ignored based on the provided list.
-
-Actually, looking again at the rule about when to output empty vs. when to include standard ignores: since the changes only include C# source files (.cs) and no build artifacts or dependencies, I should output nothing.
-
-```
-
-
 ```

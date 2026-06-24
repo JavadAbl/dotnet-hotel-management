@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Domain.Models;
+using Domain.Enums;
 using Infrastructure.Data;
 using Application.Contracts;
 
@@ -20,7 +21,7 @@ public class InvoiceRepository : Repository<Invoice>, IInvoiceRepository
             .ToListAsync();
     }
 
-    public async Task<IEnumerable<Invoice>> GetByStatusAsync(string status)
+    public async Task<IEnumerable<Invoice>> GetByStatusAsync(InvoiceStatus status)
     {
         return await _dbSet
             .Include(i => i.Reservation)

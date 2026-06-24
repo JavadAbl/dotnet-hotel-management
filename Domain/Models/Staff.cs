@@ -8,6 +8,8 @@ public class Staff
     public string Role { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
     public int DepartmentId { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime? UpdatedAt { get; set; }
     
     // Navigation properties
     public Department? Department { get; set; }

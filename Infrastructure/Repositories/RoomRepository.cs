@@ -1,6 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using Domain.Models;
+using Domain.Enums;
 using Infrastructure.Data;
 using Application.Contracts;
 
@@ -12,7 +13,7 @@ public class RoomRepository : Repository<Room>, IRoomRepository
     {
     }
 
-    public async Task<IEnumerable<Room>> GetRoomsByStatusAsync(string status)
+    public async Task<IEnumerable<Room>> GetRoomsByStatusAsync(RoomStatus status)
     {
         return await _dbSet
             .Include(r => r.RoomType)

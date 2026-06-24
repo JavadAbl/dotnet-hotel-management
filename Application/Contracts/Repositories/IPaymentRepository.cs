@@ -1,8 +1,7 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using Application.Contracts.Repositories;
 using Domain.Models;
 
-namespace Application.Interfaces;
+namespace Application.Contracts;
 
 public interface IPaymentRepository : IRepository<Payment>
 {

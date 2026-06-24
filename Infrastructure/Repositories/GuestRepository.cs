@@ -1,9 +1,8 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
+
 using Microsoft.EntityFrameworkCore;
-using Application.Interfaces;
-using Domain.Models;
 using Infrastructure.Data;
+using Application.Contracts;
+using Domain.Models;
 
 namespace Infrastructure.Repositories;
 

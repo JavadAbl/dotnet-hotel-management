@@ -1,5 +1,4 @@
-namespace Domain;
-
+namespace Domain.Models;
 public class Invoice
 {
     public int InvoiceId { get; set; }

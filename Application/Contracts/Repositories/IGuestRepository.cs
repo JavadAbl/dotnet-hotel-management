@@ -1,8 +1,7 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Domain.Models;
+using Application.Contracts.Repositories;
 
-namespace Application.Interfaces;
+namespace Application.Contracts;
 
 public interface IGuestRepository : IRepository<Guest>
 {

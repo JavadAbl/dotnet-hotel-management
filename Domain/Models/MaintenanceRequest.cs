@@ -1,5 +1,4 @@
-namespace Domain;
-
+namespace Domain.Models;
 public class MaintenanceRequest
 {
     public int MaintenanceId { get; set; }

@@ -5,8 +5,10 @@ public class Room
     public int RoomId { get; set; }
     public string RoomNumber { get; set; } = string.Empty;
     public int Floor { get; set; }
-    public string Status { get; set; } = string.Empty;
+    public RoomStatus Status { get; set; } = RoomStatus.Available;
     public int RoomTypeId { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime? UpdatedAt { get; set; }
     
     // Navigation properties
     public RoomType? RoomType { get; set; }

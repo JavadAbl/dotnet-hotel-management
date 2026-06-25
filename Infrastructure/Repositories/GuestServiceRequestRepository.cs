@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Domain.Models;
+using Domain.Enums;
 using Infrastructure.Data;
 using Application.Contracts;
 
@@ -20,7 +21,7 @@ public class GuestServiceRequestRepository : Repository<GuestServiceRequest>, IG
             .ToListAsync();
     }
 
-    public async Task<IEnumerable<GuestServiceRequest>> GetByStatusAsync(string status)
+    public async Task<IEnumerable<GuestServiceRequest>> GetByStatusAsync(ServiceRequestStatus status)
     {
         return await _dbSet
             .Include(g => g.Reservation)

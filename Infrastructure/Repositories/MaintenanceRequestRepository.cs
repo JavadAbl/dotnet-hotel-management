@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Domain.Models;
+using Domain.Enums;
 using Infrastructure.Data;
 using Application.Contracts;
 
@@ -20,7 +21,7 @@ public class MaintenanceRequestRepository : Repository<MaintenanceRequest>, IMai
             .ToListAsync();
     }
 
-    public async Task<IEnumerable<MaintenanceRequest>> GetByStatusAsync(string status)
+    public async Task<IEnumerable<MaintenanceRequest>> GetByStatusAsync(MaintenanceStatus status)
     {
         return await _dbSet
             .Include(m => m.Room)
@@ -29,7 +30,7 @@ public class MaintenanceRequestRepository : Repository<MaintenanceRequest>, IMai
             .ToListAsync();
     }
 
-    public async Task<IEnumerable<MaintenanceRequest>> GetByPriorityAsync(string priority)
+    public async Task<IEnumerable<MaintenanceRequest>> GetByPriorityAsync(MaintenancePriority priority)
     {
         return await _dbSet
             .Include(m => m.Room)

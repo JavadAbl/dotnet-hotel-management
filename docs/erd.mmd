@@ -1,0 +1,183 @@
+erDiagram
+    %% --- Inheritance ---
+    BaseEntity <|-- User : inherits
+    BaseEntity <|-- Staff : inherits
+    BaseEntity <|-- RoomType : inherits
+    BaseEntity <|-- Room : inherits
+    BaseEntity <|-- Guest : inherits
+    BaseEntity <|-- Reservation : inherits
+    BaseEntity <|-- Payment : inherits
+    BaseEntity <|-- Invoice : inherits
+    BaseEntity <|-- RoomCleaning : inherits
+    BaseEntity <|-- Service : inherits
+    BaseEntity <|-- ServiceBooking : inherits
+    BaseEntity <|-- RoomFeature : inherits
+    BaseEntity <|-- RoomFeatureAssignment : inherits
+    BaseEntity <|-- Review : inherits
+
+    %% --- Core Relationships ---
+    RoomType ||--o{ Room : "categorizes"
+    Room ||--o{ Reservation : "booked in"
+    Room ||--o{ RoomCleaning : "cleaned"
+    Room ||--o{ RoomFeatureAssignment : "contains"
+    
+    Guest ||--o{ Reservation : "makes"
+    Guest ||--o{ Review : "writes"
+    
+    Reservation ||--o{ Payment : "paid by"
+    Reservation ||--o{ Invoice : "generates"
+    Reservation ||--o{ ServiceBooking : "includes"
+    Reservation ||--o{ Review : "receives"
+    
+    Staff ||--o{ RoomCleaning : "performs"
+    Staff ||--o{ ServiceBooking : "provides"
+    Staff ||--o| User : "has system account"
+    
+    Service ||--o{ ServiceBooking : "offered as"
+    
+    RoomFeature ||--o{ RoomFeatureAssignment : "assigned to"
+    User ||--o{ Reservation : "creates"
+
+    %% --- BaseEntity (inherited by all entities) ---
+    BaseEntity {
+        int id PK
+        datetime createdAt
+        datetime updatedAt
+        string createdBy
+        string updatedBy
+        datetime deletedAt
+    }
+
+    %% --- Entities & Attributes (entity-specific only) ---
+    User {
+        int staffId FK
+        string username
+        string passwordHash
+        string email
+        string systemRole
+        boolean isActive
+        datetime lastLogin
+    }
+
+    Staff {
+        string firstName
+        string lastName
+        string operationalRole
+        string phone
+        string shiftSchedule
+        text operationalPermissions
+    }
+    
+    RoomType {
+        string name
+        decimal basePrice
+        string description
+        int maxOccupancy
+        string standardAmenities
+    }
+    
+    Room {
+        int roomNumber
+        int typeId FK
+        int floorNumber
+        decimal pricePerNight
+        string status
+        int capacity
+        text amenities
+    }
+    
+    Guest {
+        string firstName
+        string lastName
+        string email
+        string phone
+        string address
+        string passportNumber
+        string loyaltyStatus
+        text preferences
+    }
+    
+    Reservation {
+        int guestId FK
+        int roomId FK
+        date checkInDate
+        date checkOutDate
+        int numberOfNights
+        string status
+        text specialRequests
+        string bookingSource
+    }
+    
+    Payment {
+        int reservationId FK
+        decimal amount
+        string paymentMethod
+        string currency
+        string status
+        string transactionId
+        datetime paymentDate
+    }
+    
+    Invoice {
+        int reservationId FK
+        decimal totalAmount
+        decimal taxAmount
+        string paymentStatus
+        datetime issueDate
+        datetime dueDate
+    }
+    
+    RoomCleaning {
+        int roomId FK
+        int staffId FK
+        datetime scheduledDateTime
+        datetime actualDateTime
+        string status
+        string cleaningType
+        text notes
+        int qualityRating
+        int durationMinutes
+    }
+    
+    Service {
+        string name
+        string description
+        decimal price
+        string type
+    }
+    
+    ServiceBooking {
+        int reservationId FK
+        int serviceId FK
+        int staffId FK
+        datetime bookingDate
+        datetime serviceDate
+        decimal chargedAmount
+        string status
+        text notes
+    }
+    
+    RoomFeature {
+        string name
+        string description
+        string category
+        boolean isStandard
+        decimal additionalCost
+        boolean isAvailable
+    }
+    
+    RoomFeatureAssignment {
+        int roomId FK
+        int featureId FK
+        datetime addedDate
+        string status
+        text notes
+    }
+    
+    Review {
+        int guestId FK
+        int reservationId FK
+        int rating
+        text comments
+        datetime reviewDate
+    }

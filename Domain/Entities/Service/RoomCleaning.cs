@@ -1,6 +1,6 @@
-using Domain.Entities.Housekeeping.Enums;
+using Domain.Entities.Service.Enums;
 
-namespace Domain.Entities.Housekeeping;
+namespace Domain.Entities.Service;
 
 public class RoomCleaning : BaseEntity
 {

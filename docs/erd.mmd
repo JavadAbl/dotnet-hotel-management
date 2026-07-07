@@ -1,19 +1,19 @@
 erDiagram
     %% --- Inheritance ---
-    BaseEntity <|-- User : inherits
-    BaseEntity <|-- Staff : inherits
-    BaseEntity <|-- RoomType : inherits
-    BaseEntity <|-- Room : inherits
-    BaseEntity <|-- Guest : inherits
-    BaseEntity <|-- Reservation : inherits
-    BaseEntity <|-- Payment : inherits
-    BaseEntity <|-- Invoice : inherits
-    BaseEntity <|-- RoomCleaning : inherits
-    BaseEntity <|-- Service : inherits
-    BaseEntity <|-- ServiceBooking : inherits
-    BaseEntity <|-- RoomFeature : inherits
-    BaseEntity <|-- RoomFeatureAssignment : inherits
-    BaseEntity <|-- Review : inherits
+    BaseEntity ||--o{ User : inherits
+    BaseEntity ||--o{ Staff : inherits
+    BaseEntity ||--o{ RoomType : inherits
+    BaseEntity ||--o{ Room : inherits
+    BaseEntity ||--o{ Guest : inherits
+    BaseEntity ||--o{ Reservation : inherits
+    BaseEntity ||--o{ Payment : inherits
+    BaseEntity ||--o{ Invoice : inherits
+    BaseEntity ||--o{ RoomCleaning : inherits
+    BaseEntity ||--o{ Service : inherits
+    BaseEntity ||--o{ ServiceBooking : inherits
+    BaseEntity ||--o{ RoomFeature : inherits
+    BaseEntity ||--o{ RoomFeatureAssignment : inherits
+    BaseEntity ||--o{ Review : inherits
 
     %% --- Core Relationships ---
     RoomType ||--o{ Room : "categorizes"
@@ -25,9 +25,9 @@ erDiagram
     Guest ||--o{ Review : "writes"
     
     Reservation ||--o{ Payment : "paid by"
-    Reservation ||--o{ Invoice : "generates"
+    Reservation ||--o| Invoice : "generates"
     Reservation ||--o{ ServiceBooking : "includes"
-    Reservation ||--o{ Review : "receives"
+    Reservation ||--o| Review : "receives"
     
     Staff ||--o{ RoomCleaning : "performs"
     Staff ||--o{ ServiceBooking : "provides"

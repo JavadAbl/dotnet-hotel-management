@@ -1,4 +1,4 @@
-namespace Domain.Entities.Housekeeping.Enums;
+namespace Domain.Entities.Service.Enums;
 
 public enum CleaningType
 {
